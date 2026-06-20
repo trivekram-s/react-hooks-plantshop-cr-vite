@@ -11,7 +11,7 @@ function PlantPage() {
   useEffect(() => {
     fetch("http://localhost:6001/plants")
       .then((r) => r.json())
-      .then((data) => setPlants(data));
+      .then((data) => setPlants(data.map((plant) => ({ ...plant, inStock: true }))));
   }, []);
 
   function handleAddPlant(newPlant) {
